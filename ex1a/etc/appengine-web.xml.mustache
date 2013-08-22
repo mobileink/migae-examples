@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+	DO NOT EDIT!  THIS IS A TEMPLATE used to generate
+	war/WEB-INF/appengine-web.xml.  Edit project.clj instead.
+-->
+<appengine-web-app xmlns="http://appengine.google.com/ns/1.0">
+
+  <application>{{app-id}}</application>
+  <version>{{version}}</version>
+
+  <threadsafe>{{threads}}</threadsafe>
+
+  <!-- <static-files> -->
+  <!--   <include path="{{static_include_pattern}}" {{#static_expire}}expiration="{{static_expire}}"{{/static_expire}}/> -->
+  <!--   {{#static_exclude}} -->
+  <!--   <exclude path="{{static_exclude_pattern}}" /> -->
+  <!--   {{/static_exclude}} -->
+  <!--   <include path="/my_static-files" > -->
+  <!--     <http-header name="Access-Control-Allow-Origin" value="http://example.org" /> -->
+  <!--   </include> -->
+  <!-- </static-files> -->
+
+  <!-- <resource-files> -->
+  <!--   <include path="{{resource_include_pattern}}" {{#resource_expire}}expiration="{{resource_expire}}"{{/resource_expire}}/> -->
+  <!--   {{#resource_exclude}} -->
+  <!--   <exclude path="{{resource_exclude_pattern}}" /> -->
+  <!--   {{/resource_exclude}} -->
+  <!-- </resource-files> -->
+
+  <!-- <public-root>/static</public-root> -->
+
+  <system-properties>
+    <property name="java.util.logging.config.file"
+	      value="WEB-INF/{{java-logging}}" />
+  </system-properties>
+
+  <!-- <env-variables> -->
+  <!--   <env-var name="DEFAULT_ENCODING" value="UTF-8" /> -->
+  <!-- </env-variables> -->
+
+  <ssl-enabled>false</ssl-enabled>
+
+  <sessions-enabled>{{sessions}}</sessions-enabled>
+
+  <!--
+    After enabling Appstats in your web.xml file, uncomment this section to add a custom Appstats link 
+    to your app's admin console, as described in
+    http://code.google.com/appengine/docs/java/config/appconfig.html#Administration_Console_Custom_Pages
+
+    <admin-console>
+      <page name="Appstats" url="/appstats" />
+    </admin-console>
+   -->
+
+</appengine-web-app>
