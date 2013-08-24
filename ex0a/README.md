@@ -8,6 +8,15 @@ gen-class magic, demystified
  correct, but there are some things I say that are based on inference
  rather than knowledge.
 
+## Getting started
+
+Start by running
+
+    ex0a $ lein deps
+
+That will make sure you have the right version of Clojure as well as
+the jetty-runner.jar we will use to run our servlets.
+
 ## Usage
 
 Start out by using the Leiningen "jar" task:
@@ -28,9 +37,9 @@ Verify:
 You can ignore the "stale" directory; it has something to do with how
 Leiningen works.
 
-Now let's test the servlet.  If you've install lein-migae, do:
+Now let's test the servlet.  If you've installed lein-migae, do:
 
-    ex0a $ lein migae jetty
+    ex0a $ lein migae jetty start
 
 If not, do:
 
@@ -39,7 +48,7 @@ If not, do:
 Use ps to verify that it's running and inspect the error log it
 creates to make sure there are no errors.
 
-(You can stop the server with migae-jetty.sh stop or lein migae stop.)
+(You can stop the server with `migae-jetty.sh stop` or `lein migae jetty stop`.)
 
 Now send your browser to localhost:8080/test/foo.  You should get a
 503 error, Service Unavailable.  In jetty.err.log you should see
@@ -75,7 +84,7 @@ Then let's check the jarfile:
     project.clj
     META-INF/leiningen/ex0a/ex0a/README.md
 
-No wonder ClassNotFound!  "lein jar" created a jarfile, but didn't put
+No wonder ClassNotFound!  `$ lein jar` created a jarfile, but didn't put
 any code in it.  Why not?  Because "lein jar" does not compile
 anything; it just jars up class files (and some other stuff like the
 META-INF files shown).
@@ -92,19 +101,19 @@ the container is only interested in Java byte code.
 ### gen-class and aot compilation
 
 To fix this, we just need to compile our servlet.  The way to do this
-with Leiningen is "lein compile".  To tell leiningen where the
+with Leiningen is `$ lein compile`.  To tell leiningen where the
 compiled byte code should go, we use the :compile-path option in our
 project file:
 
     :compile-path "war/WEB-INF/classes"
 
-If you run "lein compile" as things stand, nothing will happen.
+If you run `$ lein compile` as things stand, nothing will happen.
 That's because Leiningen will only compile what is listed using the
-:aot option in project.clj.  So uncomment what's there, yielding
+`:aot` option in project.clj.  So uncomment what's there, yielding
 
     :aot [ex0a.servlet]
 
-and run "lein compile" again.  This time you should see the class
+and run `$ lein compile` again.  This time you should see the class
 files in war/WEB-INF/classes:
 
     ex0a $ ls -l war/WEB-INF/classes/ex0a/
@@ -115,10 +124,10 @@ files in war/WEB-INF/classes:
     -rw-r--r-- gar 6138 Aug 24 11:29 servlet.class
     -rw-r--r-- gar 3272 Aug 24 11:29 servlet__init.class
 
-This gives us a clue as to what gen-class does.  According to the
+This gives us a clue as to what `gen-class` does.  According to the
 documentation
 (http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/gen-class),
-gen-class (:gen-class is the ns option corresponding to the gen-class
+`gen-class` (`:gen-class` is the ns option corresponding to the gen-class
 macro) generates bytecode for the class - in this case, the one
 corresponding to the namespace of our file, i.e. ex0a.servlet.  But
 the critical clause is:
@@ -133,7 +142,7 @@ servlet.class in the ex0a subdirectory of classes.  Now when the
 container searches for ex0a.servlet it will look in the ex0a
 subdirectory of the classes dir, searching for servlet.class.  On
 finding it, it will load it and commence the servlet life-cycle, first
-calling the init method and then the service method.
+calling the `init` method and then the `service` method.
 
 Since we did not implement the `init` method (we would have to call it
 `-init`, since Clojure's convention is to prefix Java method names
@@ -153,19 +162,19 @@ implementation code.
 
 It is not evident from this example, but the critical element in all
 this is that the `gen-class` generated stub code hooks into the Clojure
-runtime.  When it comes time for the service stub to pass control to
+runtime.  When it comes time for the `service` stub to pass control to
 the implementation, it is the Clojure runtime rather than the Java
 runtime that will control the searching and loading.  And since our
--service implementation is in the aot-compiled namespace, it will look
+`-service` implementation is in the aot-compiled namespace, it will look
 for the appropriate class file.  As we will see in exercise ex1b, the
-:impl-ns allows us to put our implementation in a different namespace;
+`:impl-ns` allows us to put our implementation in a different namespace;
 the result is that Clojure will search for either a .clj file or a
 .class file; if it finds the former, it will load and evaluate it.
 
 Exercize: try deleting the .class files one at a time, and see what
 kind of errors arise when you try to run the servlet.
 
-The point of this trivial little exercise is to show how gen-class,
+The point of this trivial little exercise is to show how `gen-class`,
 aot compilation, lein's jar task, and the servlet container work
 together.
 
