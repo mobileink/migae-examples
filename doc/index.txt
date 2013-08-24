@@ -2,6 +2,7 @@ Structure:
 
     1.  a.  gen-class only, no ring, no gae, test with jetty-runner
         b.  ditto, but use impl-ns to split out method implementations for interactive dev
+	c.  add filter, to reload source code
     2.  ring.
         a.  show how ring clojurizes the vanilla servlet stuff
         b.  weakness of ring: only one servlet, no web.xml
@@ -29,6 +30,20 @@ source) into the jar, so it will be available to the GAE servers.  For
 production, you can aot compile everthing.
 
 To see what goes in the jarfile:  $ jar tf war/WEB-INF/lib/ex1b-0.1.0.SNAPSHOT.jar
+
+Exploring Clojure RTE:
+
+    Try running the app without the Clojure jar in war/WEB-INF/lib -
+    you'll get a message to the effect that
+    "java.lang.NoClassDefFoundError: clojure/lang/IFn"...Caused by:
+    java.lang.ClassNotFoundException: clojure.lang.IFn".  This means
+    (I believe) that the container was able to load the
+    (Clojure-generated) servlet classfile, but when it went to invoke
+    its methods - e.g. init - the Clojure-generated stub
+    implementation said, in effect, "find the test-init class in the
+    impl package and run it".  This is a command to be handled by the
+    Clojure runtime rather than the JVM, and since the runtime jar is
+    missing, you get the ClassNotFound exception.
 
 ex1:
 

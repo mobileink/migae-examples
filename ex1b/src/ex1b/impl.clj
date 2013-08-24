@@ -4,37 +4,40 @@
                                HttpServletResponse)
            (javax.servlet ServletConfig)))
 
-(defn request-objinit
+(defn test-objinit
   [& rest]
-  (println "ex1b.impl objinit invoked"))
+  (println "ex1b.impl test-objinit invoked"))
 
-(defn request-objpostinit
+(defn test-objpostinit
   [obj & rest]
-  (println "ex1b.impl objpostinit invoked"))
+  (println "ex1b.impl test-objpostinit invoked"))
 
-(defn request-init
+(defn test-init
   [^HttpServlet servlet
    ^ServletConfig cfg]
-  (println "ex1b.impl request-init method implementation invoked"))
+  (println "ex1b.impl test-init method implementation invoked"))
 
-(defn request-service
+;; The bad way to do it - using the Java API instead of ring:
+(defn test-doGet
   [^HttpServlet servlet
    ^HttpServletRequest rqst
    ^HttpServletResponse resp]
-  (println "ex1b.impl request-service method implementation invoked"))
+  ;; PrintWriter out = response.getWriter();
+  ;; out.println("Hello World");
+  (do
+    (println "ex1b.impl test-doGet method implementation invoked")
+    (.println (.getWriter resp) "Hello World - the bad way!")))
 
-(defn request-destroy
+(defn test-destroy
   []
-  (println "ex1b.impl request-destroy method implementation invoked"))
-
-(println "ex1b.impl:  why am I being evaluated??")
+  (println "ex1b.impl test-destroy method implementation invoked"))
 
 ;; Expected console output when localhost:8080/request/foo accessed:
 
-;; ex1b.impl:  why am I being evaluated??
-;; ex1b.impl objinit invoked
-;; ex1b.impl objpostinit invoked
-;; ex1b.impl request-init method implementation invoked
-;; ex1b.impl request-service method implementation invoked
+;; ex1b.impl test-objinit invoked
+;; ex1b.impl test-objpostinit invoked
+;; ex1b.impl test-init method implementation invoked
+;; ex1b.impl test-service method implementation invoked
 
 ;; (assuming use of jetty-runner.jar)
+

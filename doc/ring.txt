@@ -1,0 +1,35 @@
+
+A note on the structure of ring.  ring-jetty-adapter actually does two
+things.  First, it "adapts" a ring handler to Jetty, which just means
+that it makes the ring handler function as a the implementation of the
+handler method of a Jetty AbstractHandler POJO.  It does this by using
+Clojure's proxy function, which dynamically creates a Java object.
+See "proxy-handler" in ring-jetty-adapter/src/ring/adapter/jetty.clj.
+
+The second thing ring-jetty-adapter does is embed and run a Jetty
+server, with the Jetty handler created out of the client ring handler.
+
+To mediate between a ring handler and a Jetty handler, ring uses
+ring-servlet.  That really should be called ring-httpservlet-adapter,
+since it converts HTTPServlet POJO structures to Clojure maps and vice
+versa.
+
+This all works just great, but it does have a drawback.  It does not
+offer complete support of the Java Servlet architecture.  In
+particular, it limits you to one servlet, and it does not use the
+web.xml file that standardly configures web apps.
+
+It turns out that the easy way around this is to drop the use of
+embedded jetty altogether and use jetty-runner.jar.  Instead of making
+ring responsible for dynamically creating Jetty handlers (using
+proxy), we push responsibility to the user, who will use gen-class to
+create ordinary servlet objects.  This is very simple, and can be
+isolated in a single (aot-compiled) file that will rarely change.
+This allows for multiple servlets and web.xml-based configuration.
+Adding a simple ServletFilter gives us Clojure's standard dynamic code
+evaluation.  Then If you do this correctly (the examples show how)
+then you don't give up any of the benefits of using a repl that come
+from using an embedded server; the webserver itself acts as a kind of
+repl.  To evaluate code, you just refresh the browser.
+
+
