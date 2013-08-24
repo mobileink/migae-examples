@@ -1,5 +1,4 @@
 (ns ex2b.impl
-;  (:require [ring.util.servlet :as ring])
   (:import (javax.servlet.http HttpServlet
                                HttpServletRequest
                                HttpServletResponse)
