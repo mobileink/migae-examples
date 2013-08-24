@@ -13,6 +13,8 @@ project.clj contains this clause:
 
 	    :target-path "war/WEB-INF/lib"
 
+Verify:
+
     ex0a $ ls -l war/WEB-INF/lib
     -rw-r--r--  1 <uid>  <gid>  2986 Aug 24 08:55 ex0a-0.1.0-SNAPSHOT.jar
     drwxr-xr-x  3 <uid>  <gid>   102 Aug 24 08:49 stale
@@ -20,7 +22,18 @@ project.clj contains this clause:
 You can ignore the "stale" directory; it has something to do with how
 Leiningen works.
 
-Now test the servlet:
+Now let's test the servlet.  If you've install lein-migae, do:
+
+    ex0a $ lein migae jetty
+
+If not, do:
+
+    ex0a $ ./migae-jetty.sh start
+
+Use ps to verify that it's running and inspect the error log it
+creates to make sure there are no errors.
+
+(You can stop the server with migae-jetty.sh stop or lein migae stop.)
 
 ## Options
 
