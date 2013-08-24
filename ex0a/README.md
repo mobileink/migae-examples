@@ -1,16 +1,26 @@
-# ex1
+# Experiment ex0a
 
-FIXME: description
-
-## Installation
-
-Download from http://example.com/FIXME.
+gen-class magic, demystified
 
 ## Usage
 
-FIXME: explanation
+Start out by using the Leiningen "jar" task:
 
-    $ java -jar ex1-0.1.0-standalone.jar [args]
+    ex0a $ lein jar
+
+The result should be a jarfile in war/WEB-INF/lib; that's because our
+project.clj contains this clause:
+
+  :target-path "war/WEB-INF/lib"
+
+    ex0a $ ls -l war/WEB-INF/lib
+    -rw-r--r--  1 <uid>  <gid>  2986 Aug 24 08:55 ex0a-0.1.0-SNAPSHOT.jar
+    drwxr-xr-x  3 <uid>  <gid>   102 Aug 24 08:49 stale
+
+You can ignore the "stale" directory; it has something to do with how
+Leiningen works.
+
+Now test the servlet:
 
 ## Options
 
