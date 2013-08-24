@@ -11,7 +11,7 @@ Start out by using the Leiningen "jar" task:
 The result should be a jarfile in war/WEB-INF/lib; that's because our
 project.clj contains this clause:
 
-  :target-path "war/WEB-INF/lib"
+	    :target-path "war/WEB-INF/lib"
 
     ex0a $ ls -l war/WEB-INF/lib
     -rw-r--r--  1 <uid>  <gid>  2986 Aug 24 08:55 ex0a-0.1.0-SNAPSHOT.jar
