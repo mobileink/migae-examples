@@ -31,8 +31,8 @@
 
 ;; We can just as easily implement -doGet etc. instead of -service,
 ;; since they have the same arg structure.  Try uncommenting the
-;; -doGet code below and commenting out -service (above), then
-;; recompile and test.
+;; -doGet code below and commenting out -service (above); make the
+;; corresponding changes to impl.clj.  Then recompile and test.
 
 ;; (defn -doGet
 ;;   [^HttpServlet this
