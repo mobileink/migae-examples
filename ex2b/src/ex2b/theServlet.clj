@@ -14,7 +14,11 @@
 ;; ring-servlet)
 
 (defn -service
-  ^{:doc "Servlet service method.  Call ring servlet adapter code to convert incoming HttpServletRequest POJO to a Clojure map, then call our handler implementation that generates the output map, then call another ring adapter to convert that Clojure map to the outgoing HttpServletResponse POJO."}
+  ^{:doc "Servlet service method.  Call ring servlet adapter code to
+  convert incoming HttpServletRequest POJO to a Clojure map, then call
+  our handler implementation that generates the output map, then call
+  another ring adapter to convert that Clojure map to the outgoing
+  HttpServletResponse POJO."}
   [^HttpServlet this
    ^HttpServletRequest rqst
    ^HttpServletRequest resp]
