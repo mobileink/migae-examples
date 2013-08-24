@@ -46,8 +46,3 @@
 ;;         (ring/update-servlet-response resp response-map)))))
 
 
-(defn -destroy
-  []
-  (println "ex2b.theServlet -destroy method implementation invoked"))
-
-
