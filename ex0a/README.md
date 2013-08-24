@@ -35,6 +35,29 @@ creates to make sure there are no errors.
 
 (You can stop the server with migae-jetty.sh stop or lein migae stop.)
 
+Now send your browser to localhost:8080/test/foo.  You should get a
+503 error, Service Unavailable.  In jetty.err.log you should see
+
+    2013-08-24 10:01:19.468:WARN:oejs.Holder:main: 
+    java.lang.ClassNotFoundException: ex0a.servlet
+
+What went wrong?  Let's check the jarfile:
+
+    ex0a $ tar tf war/WEB-INF/lib/ex0a-0.1.0-SNAPSHOT.jar
+    META-INF/MANIFEST.MF
+    META-INF/maven/ex0a/ex0a/pom.xml
+    META-INF/maven/ex0a/ex0a/pom.properties
+    META-INF/leiningen/ex0a/ex0a/project.clj
+    project.clj
+    META-INF/leiningen/ex0a/ex0a/README.md
+
+No wonder ClassNotFound!  The point of this trivial little exercise is
+to show how gen-class, aot compilation, lein's jar task, and the
+servlet container work together.
+
+
+
+
 ## Options
 
 FIXME: listing of options this app accepts.
