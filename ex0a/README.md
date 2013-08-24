@@ -118,19 +118,19 @@ files in war/WEB-INF/classes:
 
     ex0a $ ls -l war/WEB-INF/classes/ex0a/
 
-    -rw-r--r-- gar 1010 Aug 24 11:29 servlet$_service.class
-    -rw-r--r-- gar 1325 Aug 24 11:29 servlet$fn__16.class
-    -rw-r--r-- gar 1878 Aug 24 11:29 servlet$loading__4910__auto__.class
-    -rw-r--r-- gar 6138 Aug 24 11:29 servlet.class
-    -rw-r--r-- gar 3272 Aug 24 11:29 servlet__init.class
+    -rw-r--r-- <uid> 1010 Aug 24 11:29 servlet$_service.class
+    -rw-r--r-- <uid> 1325 Aug 24 11:29 servlet$fn__16.class
+    -rw-r--r-- <uid> 1878 Aug 24 11:29 servlet$loading__4910__auto__.class
+    -rw-r--r-- <uid> 6138 Aug 24 11:29 servlet.class
+    -rw-r--r-- <uid> 3272 Aug 24 11:29 servlet__init.class
 
 This gives us a clue as to what `gen-class` does.  According to the
 documentation
 (http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/gen-class),
-`gen-class` (`:gen-class` is the ns option corresponding to the gen-class
-macro) generates bytecode for the class - in this case, the one
-corresponding to the namespace of our file, i.e. ex0a.servlet.  But
-the critical clause is:
+`gen-class` (`:gen-class` is the `ns` option corresponding to the
+`gen-class` macro) generates bytecode for the class \- in this case,
+the one corresponding to the namespace of our file, i.e. ex0a.servlet.
+But the critical clause is:
 
     The gen-class construct contains no implementation, as the
     implementation will be dynamically sought by the generated class in
