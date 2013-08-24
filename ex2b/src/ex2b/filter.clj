@@ -3,6 +3,11 @@
                           ServletRequest ServletResponse))
   (:gen-class :implements [javax.servlet.Filter]))
 
+;; since we're implementing an interace rather than extending a class,
+;; all methods must be implemented!
+
+(defn -init [^Filter this ^FilterConfig cfg])
+
 (defn -doFilter
   [^Filter this
    ^ServletRequest rqst
