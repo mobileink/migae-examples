@@ -1,8 +1,7 @@
 (ns ex2b.filter
   (:import (javax.servlet Filter FilterChain FilterConfig
                           ServletRequest ServletResponse))
-  (:gen-class :implements [javax.servlet.Filter]
-              :init finit))
+  (:gen-class :implements [javax.servlet.Filter]))
 
 (defn -doFilter
   [^Filter this
