@@ -30,6 +30,8 @@ servlets and use of web.xml for configuration, in constrast with
 standard Ring, which (as far as I can tell) supports only a single
 servlet and does not use web.xml.
 
+See http://www.eclipse.org/jetty/documentation/current/jetty-runner.html
+
 # Google App Engine
 
 GAE uses a modified version of Jetty, so to test a web app one must
