@@ -10,21 +10,23 @@ dependencies must be in war/WEB-INF/lib, and all application code must
 be either jarred up in war/WEB-INF/lib or in war/WEB-INF/classes.
 
 If you put the app code in a jar, you lose interactive development.
-You can get interactive development under dev_appserver, but at a cost:
-you must put your source tree in war/WEB-INF/classes, and you must use
-`:jar-exclusions` (see project.clj) to exclude the dynamic source from
-your jar file.  Obviously this is not advisable, since the classes dir
-and contents are dynamically created by `lein compile`.  So you would
-not want to do this as a matter of course, but in exploring you might
-as well give it a try - edit project.clj appropriately, copy
-src/gae/user_impl.clj to war/WEB-INF/classes/gae, fire up
-dev_appserver, edit war/WEB-INF/classes/gae/user_impl.clj, and refresh
-the browser.  This just demonstrates that the Clojure runtime's code
-loading and evaluation functionality continues to operate in GAE.
+Actually you can get interactive development under dev_appserver, but
+at a cost: you must put your source tree in war/WEB-INF/classes, and
+you must use `:jar-exclusions` (see project.clj) to exclude the
+dynamic source from your jar file.  Obviously this is not advisable,
+since the classes dir and contents are dynamically created by `lein
+compile`.  So you would not want to do this as a matter of course, but
+in exploring you might as well give it a try - edit project.clj
+appropriately, copy src/gae/user_impl.clj to war/WEB-INF/classes/gae,
+fire up dev_appserver, edit war/WEB-INF/classes/gae/user_impl.clj, and
+refresh the browser.  This just demonstrates that the Clojure
+runtime's code loading and evaluation functionality continues to
+operate in GAE.
 
 ## Tasks
 
-To run your servlet without interactive dev capabilities:
+To run your servlet under GAE dev_appserver without interactive dev
+capabilities:
 
  1.  edit :aot in project.clj to aot compile everything.
 
@@ -53,13 +55,13 @@ web.xml.
 
 ## A Note on Dependencies
 
-You don't need to copy everything listed in :dependencies.  You will
-always need the Clojure jar, since that contains the runtime.
-Leiningen will arrange things so that the bits of code your
-application relies on will be installed in war/WEB-INF/classes and the
-app jarfile.  So, for example, you do not need to copy the compojure
-jar into war/WEB-INF/lib, even though [compojure "1.1.5"] is included
-in :dependencies.
+You don't need to install into war/WEB-INF/lib everything listed in
+:dependencies.  You will always need the Clojure jar, since that
+contains the runtime.  Leiningen will arrange things so that the bits
+of code your application relies on will be installed in
+war/WEB-INF/classes and the app jarfile.  So, for example, you do not
+need to copy the compojure jar into war/WEB-INF/lib, even though
+[compojure "1.1.5"] is included in :dependencies.
 
 However, Leiningen functionality depends on a set of naming
 conventions.  Dependency names, like [compojure "1.1.5"], will
