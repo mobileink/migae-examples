@@ -100,10 +100,12 @@ Start from scratch:
  1.  delete war/WEB-INF/lib/gae1-0.1.0-SNAPSHOT.jar
  2.  delete war/WEB-INF/classes
  3.  in project.clj:
+
 ```Clojure
 :aot [gae1.main gae1.user gae1.filter]
 ;; :jar-exclusions [#".*impl*"]
 ```
+
  4.  run `lein compile`
 
 Result: class files in war/WEB-INF/classes, no gae1 jarfile
