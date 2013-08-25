@@ -1,6 +1,6 @@
-(ns gae.main
+(ns gae1.main
   (:gen-class :extends javax.servlet.http.HttpServlet)
-  (:require [gae.main-impl :as impl]
+  (:require [gae1.main-impl :as impl]
             [ring.util.servlet :as ring]))
 
 (defn -service

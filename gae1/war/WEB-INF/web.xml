@@ -6,24 +6,24 @@
 	 xsi:schemaLocation="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
 
   <filter>
-    <filter-name>migae filter</filter-name>
-    <filter-class>gae.filter</filter-class>
+    <filter-name>migae1 filter</filter-name>
+    <filter-class>gae1.filter</filter-class>
   </filter>
 
   <filter-mapping>
-    <filter-name>migae filter</filter-name>
-    <servlet-name>test</servlet-name>
+    <filter-name>migae1 filter</filter-name>
+    <servlet-name>main</servlet-name>
   </filter-mapping>
 
   <filter-mapping>
-    <filter-name>migae filter</filter-name>
+    <filter-name>migae1 filter</filter-name>
     <servlet-name>user</servlet-name>
   </filter-mapping>
 
   <servlet>
-    <display-name>gae main</display-name>
+    <display-name>gae1 main</display-name>
     <servlet-name>main</servlet-name>
-    <servlet-class>gae.main</servlet-class>
+    <servlet-class>gae1.main</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>main</servlet-name>
@@ -31,9 +31,9 @@
   </servlet-mapping>
 
   <servlet>
-    <display-name>gae user</display-name>
+    <display-name>gae1 user</display-name>
     <servlet-name>user</servlet-name>
-    <servlet-class>gae.user</servlet-class>
+    <servlet-class>gae1.user</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>user</servlet-name>

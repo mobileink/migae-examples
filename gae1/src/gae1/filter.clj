@@ -1,4 +1,4 @@
-(ns gae.filter
+(ns gae1.filter
   (:import (javax.servlet Filter FilterChain FilterConfig
                           ServletRequest ServletResponse))
   (:gen-class :implements [javax.servlet.Filter]))
@@ -14,8 +14,8 @@
    ^ServletResponse resp
    ^FilterChain chain]
   (do
-    (println "gae.filter doFilter implementation invoked")
-    (require 'gae.main-impl 'gae.user-impl :reload :verbose)
+    (println "gae1.filter doFilter implementation invoked")
+    (require 'gae1.main-impl 'gae1.user-impl :reload :verbose)
     ;; if this is the last filter in the chain, the following
     ;; will invoke the the "target Web resource", i.e. the servlet
     ;; without this doFilter call, the servlet will not be invoked
