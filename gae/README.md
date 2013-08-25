@@ -5,12 +5,12 @@ First App Engine exercise.
 ## Introduction
 
 You can serve up your servlet using either jetty-runner.jar or the GAE
-dev_server.  The difference is that with dev_server, all jar
+dev_appserver.  The difference is that with dev_appserver, all jar
 dependencies must be in war/WEB-INF/lib, and all application code must
 be either jarred up in war/WEB-INF/lib or in war/WEB-INF/classes.
 
 If you put the app code in a jar, you lose interactive development.
-You can get interactive development under dev_server, but at a cost:
+You can get interactive development under dev_appserver, but at a cost:
 you must put your source tree in war/WEB-INF/classes, and you must use
 `:jar-exclusions` (see project.clj) to exclude the dynamic source from
 your jar file.  Obviously this is not advisable, since the classes dir
@@ -29,9 +29,27 @@ To run your servlet without interactive dev capabilities:
  1.  edit :aot in project.clj to aot compile everything.
 
  2.  copy dependency jars from ~/.m2/repository to war/WEB-INF/lib
- (later we will automate this)
+ (later we will automate this).  See Note on Dependencies below.
 
- 3.  
+ 3.  disable the filter (comment it out in web.xml).  No point in
+ reloading code.
+
+ 4.  run dev_appserver.sh as per official GAE instructions.
+
+If everything goes well, you'll develop your code interactively using
+jetty-runner.jar, and then system test it using dev_appserver.  It
+will pass with flying colors.
+
+In practice, you're likely to find problems with dev_appserver, so you
+will inevitably end up switching between interactive and
+non-interactive testing.  The goal is to minimize this and to make it
+as easy and fast as possible.
+
+Note that having jar dependencies in war/WEB-INF/lib has no effect
+under jetty-runner.jar so you don't need to remove them once they're
+installed.  So it really comes down to running migae-jetty.sh versus
+running dev_appserver, and enabling and disabling the filter in
+web.xml.
 
 ## A Note on Dependencies
 
@@ -68,6 +86,11 @@ Now there is probably a way to tell Leiningen to add that path to its
 search path for `lein jar`, but I don't know what it is.  So for now,
 the way to fix this sort of problem is simply to copy the needed jar
 to war/WEB-INF/lib.
+
+(NB: migae-jetty.sh uses the --lib option to tell jetty where to find
+the jar, so it will work if it isn't in war/WEB-INF/lib.  But
+dev_appserver won't; there is no way to tell the GAE dev server to look
+outside of war/WEB-INF for classfiles.)
 
 ## License
 
