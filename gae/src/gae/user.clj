@@ -1,9 +1,5 @@
 (ns gae.user
   (:gen-class :extends javax.servlet.http.HttpServlet)
-  (:import (javax.servlet.http HttpServlet
-                               HttpServletRequest
-                               HttpServletResponse)
-           (javax.servlet ServletConfig))
   (:require [gae.user-impl :as impl]
             [ring.util.servlet :as ring]))
 
