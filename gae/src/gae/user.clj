@@ -4,9 +4,7 @@
             [ring.util.servlet :as ring]))
 
 (defn -service
-  [^HttpServlet this
-   ^HttpServletRequest rqst
-   ^HttpServletRequest resp]
+  [this rqst resp]
   (do
     (println "gae.user -service method implementation invoked")
     (let [request-map  (ring/build-request-map rqst)
