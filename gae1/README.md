@@ -97,21 +97,21 @@ outside of war/WEB-INF for classfiles.)
 ## Experiment
 
 Start from scratch:
-1.  delete war/WEB-INF/lib/gae1-0.1.0-SNAPSHOT.jar
-2.  delete war/WEB-INF/classes
-3.  in project.clj:
+ 1.  delete war/WEB-INF/lib/gae1-0.1.0-SNAPSHOT.jar
+ 2.  delete war/WEB-INF/classes
+ 3.  in project.clj:
 ```Clojure
 :aot [gae1.main gae1.user gae1.filter]
 ;; :jar-exclusions [#".*impl*"]
 ```
-4.  run `lein compile`
+ 4.  run `lein compile`
 
 Result: class files in war/WEB-INF/classes, no gae1 jarfile
 
-5.  run ./migae-jetty start
-6.  in browser:  localhost:8080/hello
-7.  result: Hello World etc. from main_impl.clj
-8.  edit main_impl.clj to change message, refresh browser, see new message
+ 5.  run ./migae-jetty start
+ 6.  in browser:  localhost:8080/hello
+ 7.  result: Hello World etc. from main_impl.clj
+ 8.  edit main_impl.clj to change message, refresh browser, see new message
 
 ## License
 
