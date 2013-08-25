@@ -94,7 +94,9 @@ the jar, so it will work if it isn't in war/WEB-INF/lib.  But
 dev_appserver won't; there is no way to tell the GAE dev server to look
 outside of war/WEB-INF for classfiles.)
 
-## Experiment
+## Experiments
+
+### Experiment 1
 
 Start from scratch:
  1.  delete war/WEB-INF/lib/gae1-0.1.0-SNAPSHOT.jar
@@ -108,12 +110,64 @@ Start from scratch:
 
  4.  run `lein compile`
 
-Result: class files in war/WEB-INF/classes, no gae1 jarfile
+Result: no gae1 snapshot jar, class files in war/WEB-INF/classes,
+including impl classes (why, given our :aot?)
 
  5.  run ./migae-jetty start
  6.  in browser:  localhost:8080/hello
  7.  result: Hello World etc. from main_impl.clj
  8.  edit main_impl.clj to change message, refresh browser, see new message
+
+### Experiment 2
+
+Start again from scratch:
+ 1.  delete war/WEB-INF/lib/gae1-0.1.0-SNAPSHOT.jar
+ 2.  delete war/WEB-INF/classes
+ 3.  in project.clj:
+
+```Clojure
+:aot [gae1.main gae1.user gae1.filter]
+;; :jar-exclusions [#".*impl*"]
+```
+
+ 4.  run `lein jar`
+
+Note that the jar task invokes the compile task.  Result:
+gae1-0.1.0-SNAPSHOT.jar in war/WEB-INF/lib; class files in
+war/WEB-INF/classes, including impl classes (why, given our :aot?)
+
+ 5.  inspect contents of gae1-0.1.0-SNAPSHOT.jar:
+   a.  jar tf war/WEB-INF/lib/gae1-0.1.0-SNAPSHOT.jar
+
+Note the presence of *impl* files, both class files and clj source files.
+
+ 5.  run ./migae-jetty start
+ 6.  in browser:  localhost:8080/hello
+ 7.  result: Hello World etc. from main_impl.clj
+ 8.  edit main_impl.clj to change message, refresh browser
+
+This time, no change!  What happened is apparently the jar comes first
+when Clojure searches for the service implementation, so it finds what
+is in the jarfile instead of the code in the src/ tree.
+
+## Experiment 3
+
+Same as Experiment 2, except for step 3.  Uncomment the
+:jar-exclusions option so project.clj looks like:
+
+```Clojure
+:aot [gae1.main gae1.user gae1.filter]
+:jar-exclusions [#".*impl*"]
+```
+
+This tells Leiningen *not* to put anything whose filename matches
+.*impl* in the jarfile.  Verify this
+
+    `jar tf war/WEB-INF/lib/gae1-0.1.0-SNAPSHOT.jar1`
+
+There should be no files like "main_impl.clj" and "main_impl*class".
+
+With this in place, interactive development should be restored.
 
 ## License
 
