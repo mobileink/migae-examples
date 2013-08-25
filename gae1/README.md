@@ -139,7 +139,8 @@ war/WEB-INF/classes, including impl classes (why, given our :aot?)
  5.  inspect contents of gae1-0.1.0-SNAPSHOT.jar:
    a.  jar tf war/WEB-INF/lib/gae1-0.1.0-SNAPSHOT.jar
 
-Note the presence of *impl* files, both class files and clj source files.
+Note the presence of *impl* files, e.g. `gae1/main_impl.clj`,
+`gae1/main_impl$fn__494.class`, etc.
 
  5.  run ./migae-jetty start
  6.  in browser:  localhost:8080/hello
