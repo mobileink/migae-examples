@@ -1,9 +1,15 @@
 migae-examples
 ==============
 
-Examples of java servlet programming in Clojure.
+Examples of java servlet programming in Clojure.  The designed order is:
 
-# gen-class
+1. basic
+2. ring
+3. compojure
+4. gae
+
+
+## gen-class
 
 The first set of examples (ex1*) demonstrates the use of gen-class to
 implement a minimal servlet, configured by the standard web.xml
@@ -13,12 +19,14 @@ a simple ServletFilter makes interactive development of servlets
 possible.  The Jetty server functions as a kind of repl; refreshing a
 page triggers reload of Clojure code.
 
-# Ring
+## Ring
 
 The second set of examples (ex2*) demonstrates minimal use of Ring, so
 that request handlers can be implemented as pure Clojure functions.
 
-# Jetty
+## Compojure
+
+## Testing with Jetty
 
 All of the examples are designed to be used with jetty-runner.jar (or
 any other Jetty configuration that works as a standard Servlet
@@ -32,7 +40,7 @@ servlet and does not use web.xml.
 
 See http://www.eclipse.org/jetty/documentation/current/jetty-runner.html
 
-# Google App Engine
+## Google App Engine
 
 GAE uses a modified version of Jetty, so to test a web app one must
 use the dev_appserver provided in the GAE SDK.  We can use the
