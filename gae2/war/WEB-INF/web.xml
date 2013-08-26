@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<web-app xmlns="http://java.sun.com/xml/ns/javaee"
+	 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	 version="2.5"
+	 xsi:schemaLocation="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+
+  <filter>
+    <filter-name>migae2 filter</filter-name>
+    <filter-class>gae2.filter</filter-class>
+  </filter>
+
+  <filter-mapping>
+    <filter-name>migae2 filter</filter-name>
+    <servlet-name>main</servlet-name>
+  </filter-mapping>
+
+  <filter-mapping>
+    <filter-name>migae2 filter</filter-name>
+    <servlet-name>user</servlet-name>
+  </filter-mapping>
+
+  <servlet>
+    <display-name>gae2 main</display-name>
+    <servlet-name>main</servlet-name>
+    <servlet-class>gae2.main</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>main</servlet-name>
+    <url-pattern>/*</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <display-name>gae2 user</display-name>
+    <servlet-name>user</servlet-name>
+    <servlet-class>gae2.user</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>user</servlet-name>
+    <url-pattern>/user/*</url-pattern>
+  </servlet-mapping>
+
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+  </welcome-file-list>
+
+  <error-page>
+    <error-code>404</error-code>
+    <location>/404.html</location>
+  </error-page>
+
+</web-app>
