@@ -12,7 +12,7 @@
   :target-path "war/WEB-INF/lib"
   ;; CRITICAL!  Use :jar-exclusions to make sure the implementation code
   ;; is not byte compiled into the jar.
-  :jar-exclusions [#".*impl*"]
+;  :jar-exclusions [#".*impl*"]
   ;; :keep-non-project-classes false
   :omit-source true ;; default
   :dependencies [[org.clojure/clojure "1.5.1"]

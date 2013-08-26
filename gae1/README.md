@@ -164,9 +164,10 @@ Same as Experiment 2, except for step 3.  Uncomment the
 This tells Leiningen *not* to put anything whose filename matches
 .*impl* in the jarfile.  Verify this
 
-    `jar tf war/WEB-INF/lib/gae1-0.1.0-SNAPSHOT.jar1`
+    jar tf war/WEB-INF/lib/gae1-0.1.0-SNAPSHOT.jar1
 
-There should be no files like "main_impl.clj" and "main_impl*class".
+There should be nothing like `gae1/main_impl.clj` and
+`gae1/main_impl$fn__494.class`, etc.
 
 With this in place, interactive development should be restored.
 
