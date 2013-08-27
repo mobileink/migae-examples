@@ -1,32 +1,12 @@
-# ex1
+# compojure2
 
-FIXME: description
+Simple compojure example of web app with two servlets.
 
-## Installation
+## Instructions
 
-Download from http://example.com/FIXME.
-
-## Usage
-
-FIXME: explanation
-
-    $ java -jar ex1-0.1.0-standalone.jar [args]
-
-## Options
-
-FIXME: listing of options this app accepts.
-
-## Examples
-
-...
-
-### Bugs
-
-...
-
-### Any Other Sections
-### That You Think
-### Might be Useful
+Compile with `lein compile`, run ./migae-jetty.sh, access
+localhost:8080.  Edit impl files to change message and refresh
+browser.
 
 ## License
 

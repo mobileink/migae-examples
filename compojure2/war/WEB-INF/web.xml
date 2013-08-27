@@ -14,7 +14,7 @@
 
   <filter-mapping>
     <filter-name>migae filter</filter-name>
-    <servlet-name>test</servlet-name>
+    <servlet-name>main</servlet-name>
   </filter-mapping>
 
   <filter-mapping>
@@ -23,12 +23,12 @@
   </filter-mapping>
 
   <servlet>
-    <servlet-name>test</servlet-name>
+    <servlet-name>main</servlet-name>
     <servlet-class>cpj2.main</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>test</servlet-name>
-    <url-pattern>/*</url-pattern>
+    <servlet-name>main</servlet-name>
+    <url-pattern>/main/*</url-pattern>
   </servlet-mapping>
 
   <servlet>
@@ -43,10 +43,5 @@
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
   </welcome-file-list>
-
-  <error-page>
-    <error-code>404</error-code>
-    <location>/404.html</location>
-  </error-page>
 
 </web-app>
