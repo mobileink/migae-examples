@@ -1,4 +1,4 @@
-(ns ex0a.servlet
+(ns basic1.servlet
   (:import (javax.servlet.http HttpServlet
                                HttpServletRequest
                                HttpServletResponse))
@@ -8,4 +8,4 @@
   [^HttpServlet servlet
    ^HttpServletRequest rqst
    ^HttpServletResponse resp]
-  (println "ex0a.servlet service method invoked"))
+  (println "basic1.servlet service method invoked"))
