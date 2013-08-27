@@ -1,6 +1,9 @@
 # ring1
 
-FIXME: description
+A minimal ring example.
+
+Again, dynamic eval does not work under dev_appserver.  To use
+dev_appserver you must aot-compile everything.
 
 ## License
 

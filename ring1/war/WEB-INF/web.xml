@@ -5,11 +5,11 @@
 	 version="2.5"
 	 xsi:schemaLocation="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
 
-  <display-name>ex2a</display-name>
+  <display-name>ring1</display-name>
 
   <filter>
     <filter-name>migae filter</filter-name>
-    <filter-class>ex2a.filter</filter-class>
+    <filter-class>ring1.filter</filter-class>
   </filter>
 
   <filter-mapping>
@@ -19,7 +19,7 @@
 
   <servlet>
     <servlet-name>test</servlet-name>
-    <servlet-class>ex2a.test</servlet-class>
+    <servlet-class>ring1.test</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>test</servlet-name>
@@ -29,10 +29,5 @@
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
   </welcome-file-list>
-
-  <error-page>
-    <error-code>404</error-code>
-    <location>/404.html</location>
-  </error-page>
 
 </web-app>

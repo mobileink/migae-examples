@@ -3,9 +3,7 @@
                           ServletRequest ServletResponse))
   (:gen-class :implements [javax.servlet.Filter]))
 
-;; (defn -init
-;;   [^Filter this
-;;    ^FilterConfig cfg])
+(defn -init [this cfg])
 
 (defn -doFilter
   [^Filter this
