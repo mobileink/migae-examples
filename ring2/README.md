@@ -5,7 +5,7 @@ namespace.
 
 ## Instructions
 
-Compile with `lein compile`, run `../migae-jetty.sh`
+Compile with `lein compile`, run `../migae-jetty.sh`, access localhost:8080
 
 ## License
 

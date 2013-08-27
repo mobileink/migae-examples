@@ -1,4 +1,4 @@
-(defproject migae-examples "0.2.0-SNAPSHOT"
+(defproject migae-examples "0.1.2"
   :description "Servlet examples"
   :url "http://github.com/greynolds/migae-examples"
   :license {:name "Eclipse Public License"

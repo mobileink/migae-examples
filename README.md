@@ -1,4 +1,4 @@
-migae-examples
+migae-examples version 0.1.2
 ==============
 
 Examples of java servlet programming in Clojure.  The designed order is:

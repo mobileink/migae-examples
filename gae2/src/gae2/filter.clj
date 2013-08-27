@@ -11,5 +11,6 @@
    ^ServletResponse resp
    ^FilterChain chain]
   (do
+    ;; TODO: use https://github.com/weavejester/ns-tracker
     (require 'gae2.main-impl 'gae2.user-impl :reload) ;; :verbose)
     (.doFilter chain rqst resp)))
