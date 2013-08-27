@@ -1,4 +1,4 @@
-(ns ex1a.request
+(ns basic2.request
   (:import (javax.servlet.http HttpServlet
                                HttpServletRequest
                                HttpServletResponse)
@@ -8,17 +8,15 @@
 (defn -init
   [^HttpServlet servlet
    ^ServletConfig cfg]
-  (println "ex1a.request init method invoked"))
+  (println "basic2.request init method invoked"))
 
 (defn -service
   [^HttpServlet servlet
    ^HttpServletRequest rqst
    ^HttpServletResponse resp]
-  (println "ex1a.request service method invoked"))
+  (println "basic2.request service method invoked"))
 
 (defn -destroy
   []
-  (println "ex1a.request destroy method invoked"))
-
-(println "ex1a.request:  why am I being evaluated??")
+  (println "basic2.request destroy method invoked"))
 

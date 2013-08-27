@@ -4,6 +4,10 @@ migae-examples
 Examples of java servlet programming in Clojure.  The designed order is:
 
 1. basic
+  a. basic0 - plain Java servlet, no Clojure, to demo leiningen and servlet testing
+  b. basic1 - minimal Clojure servlet using gen-class; explore compile v. jar
+  c. basic2 - slightly more elaborate servlet
+  d. basic3 -
 2. ring
 3. compojure
 4. gae
