@@ -22,10 +22,11 @@ help; Leiningen will still look for it under org/apache/... whereas it
 is stored under commons-codec...  At least that's what it looks like
 to me.
 
-So the only way to make it go is to copy the commons jar to war/WEB-INF/lib:
+One way to make it go is to copy the commons jar to war/WEB-INF/lib:
 
     $ cp ~/.m2/repository/commons-codec/commons-codec/1.7/commons-codec-1.7.jar war/WEB-INF/lib/
 
+Alternatively, add a --jar clause to the jetty-runner command in migae-jetty.sh.
 
 ## License
 
