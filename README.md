@@ -3,7 +3,8 @@ migae-examples
 
 Examples of java servlet programming in Clojure.  The designed order is:
 
-1. basic
+ 1. basic
+
   a. basic0 - plain Java servlet, no Clojure, to demo leiningen and servlet testing
   b. basic1 - minimal Clojure servlet using gen-class; explore compile v. jar
   c. basic2 - slightly more elaborate servlet
@@ -13,20 +14,22 @@ Examples of java servlet programming in Clojure.  The designed order is:
 So far we have used Java interop facilities to deal with HTTP requests
 and responses.  Ring provides a way to do this in pure Clojure.
 
-2. ring
+ 2. ring
+
   a.  ring1
   b.  ring2
 
 Compojure is basically a set of macros that enable us to write Ring
 routes in a more conventient form.
 
-3. compojure
+ 3. compojure
 
 Up to now we've run servlets under the GAE dev_appserver environment,
 but we have not used an GAE services.  The next set of examples shows
 what happens when we try to use GAE runtime services.
 
-4. gae
+ 4. gae
+
   a. gae1 - minimal example of using a GAE service
   b. gae2 - repl hack: interactive development using GAE dev_appserver
 
