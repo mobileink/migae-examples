@@ -1,4 +1,4 @@
-# Experiment ex0a
+# Experiment basic1
 
 gen-class magic, demystified
 
@@ -12,7 +12,7 @@ gen-class magic, demystified
 
 Start by running
 
-    ex0a $ lein deps
+    basic1 $ lein deps
 
 That will make sure you have the right version of Clojure as well as
 the jetty-runner.jar we will use to run our servlets.
@@ -21,7 +21,7 @@ the jetty-runner.jar we will use to run our servlets.
 
 Start out by using the Leiningen "jar" task:
 
-    ex0a $ lein jar
+    basic1 $ lein jar
 
 The result should be a jarfile in war/WEB-INF/lib; that's because our
 project.clj contains this clause:
@@ -30,8 +30,8 @@ project.clj contains this clause:
 
 Verify:
 
-    ex0a $ ls -l war/WEB-INF/lib
-    -rw-r--r--  1 <uid>  <gid>  2986 Aug 24 08:55 ex0a-0.1.0-SNAPSHOT.jar
+    basic1 $ ls -l war/WEB-INF/lib
+    -rw-r--r--  1 <uid>  <gid>  2986 Aug 24 08:55 basic1-0.1.0-SNAPSHOT.jar
     drwxr-xr-x  3 <uid>  <gid>   102 Aug 24 08:49 stale
 
 You can ignore the "stale" directory; it has something to do with how
@@ -39,50 +39,53 @@ Leiningen works.
 
 Now let's test the servlet.  If you've installed lein-migae, do:
 
-    ex0a $ lein migae jetty start
+    basic1 $ lein migae jetty start
 
 If not, do:
 
-    ex0a $ ./migae-jetty.sh start
+    basic1 $ ./migae-jetty.sh start
 
-Use ps to verify that it's running and inspect the error log it
+Use `ps` to verify that it's running and inspect the error log it
 creates to make sure there are no errors.
 
 (You can stop the server with `migae-jetty.sh stop` or `lein migae jetty stop`.)
 
 Now send your browser to localhost:8080/test/foo.  You should get a
 503 error, Service Unavailable.  In jetty.err.log you should see
+something like:
 
     2013-08-24 10:01:19.468:WARN:oejs.Holder:main: 
-    java.lang.ClassNotFoundException: ex0a.servlet
+    java.lang.ClassNotFoundException: basic1.servlet
 
-What went wrong?  First, check war/WEB-INF/web.xml to make sure we've told the servlet container to fetch the corrct servlet.  You should find:
+What went wrong?  First, check war/WEB-INF/web.xml to make sure we've
+told the servlet container to fetch the corrct servlet.  You should
+find:
 
     <servlet>
         <servlet-name>test</servlet-name>
-    	<servlet-class>ex0a.servlet</servlet-class>
+    	<servlet-class>basic1.servlet</servlet-class>
     </servlet>
     <servlet-mapping>
 	<servlet-name>test</servlet-name>
     	<url-pattern>/test/*</url-pattern>
     </servlet-mapping>
 
-That looks correct; now double-check that we indeed made ex0a.servlet.  That is, make sure our source tree is correct - it should have /ex0a/src/ex0a/servlet.clj, and servlet.clj should start by declaring the namespace that matches the directory layout: 
+That looks correct; now double-check that we indeed made basic1.servlet.  That is, make sure our source tree is correct - it should have /basic1/src/basic1/servlet.clj, and servlet.clj should start by declaring the namespace that matches the directory layout: 
 
-     (ns ex0a.servlet ...
+     (ns basic1.servlet ...
 
-In other words, ns "ex0a.servlet" must be in servlet.clj, inside
-directory ex0a.  This is a Clojure requirement.
+In other words, ns "basic1.servlet" must be in servlet.clj, inside
+directory basic1.  This is a Clojure requirement.
 
 Then let's check the jarfile:
 
-    ex0a $ tar tf war/WEB-INF/lib/ex0a-0.1.0-SNAPSHOT.jar
+    basic1 $ tar tf war/WEB-INF/lib/basic1-0.1.0-SNAPSHOT.jar
     META-INF/MANIFEST.MF
-    META-INF/maven/ex0a/ex0a/pom.xml
-    META-INF/maven/ex0a/ex0a/pom.properties
-    META-INF/leiningen/ex0a/ex0a/project.clj
+    META-INF/maven/basic1/basic1/pom.xml
+    META-INF/maven/basic1/basic1/pom.properties
+    META-INF/leiningen/basic1/basic1/project.clj
     project.clj
-    META-INF/leiningen/ex0a/ex0a/README.md
+    META-INF/leiningen/basic1/basic1/README.md
 
 No wonder ClassNotFound!  `$ lein jar` created a jarfile, but didn't put
 any code in it.  Why not?  Because "lein jar" does not compile
@@ -111,12 +114,12 @@ If you run `$ lein compile` as things stand, nothing will happen.
 That's because Leiningen will only compile what is listed using the
 `:aot` option in project.clj.  So uncomment what's there, yielding
 
-    :aot [ex0a.servlet]
+    :aot [basic1.servlet]
 
 and run `$ lein compile` again.  This time you should see the class
 files in war/WEB-INF/classes:
 
-    ex0a $ ls -l war/WEB-INF/classes/ex0a/
+    basic1 $ ls -l war/WEB-INF/classes/basic1/
 
     -rw-r--r-- <uid> 1010 Aug 24 11:29 servlet$_service.class
     -rw-r--r-- <uid> 1325 Aug 24 11:29 servlet$fn__16.class
@@ -129,7 +132,7 @@ documentation
 (http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/gen-class),
 `gen-class` (`:gen-class` is the `ns` option corresponding to the
 `gen-class` macro) generates bytecode for the class \- in this case,
-the one corresponding to the namespace of our file, i.e. ex0a.servlet.
+the one corresponding to the namespace of our file, i.e. basic1.servlet.
 But the critical clause is:
 
     The gen-class construct contains no implementation, as the
@@ -138,8 +141,8 @@ But the critical clause is:
 
 In other words, the generated byte code will be a stub implementation
 (of HttpServlet, since we used the :extends option).  Here, that means
-servlet.class in the ex0a subdirectory of classes.  Now when the
-container searches for ex0a.servlet it will look in the ex0a
+servlet.class in the basic1 subdirectory of classes.  Now when the
+container searches for basic1.servlet it will look in the basic1
 subdirectory of the classes dir, searching for servlet.class.  On
 finding it, it will load it and commence the servlet life-cycle, first
 calling the `init` method and then the `service` method.
