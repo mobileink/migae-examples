@@ -25,6 +25,15 @@ operate in GAE.
 
 ## Tasks
 
+If everything goes well, you'll develop your code interactively using
+jetty-runner.jar, and then system test it using dev_appserver.  It
+will pass with flying colors.
+
+In practice, you're likely to find problems with dev_appserver, so you
+will inevitably end up switching between interactive and
+non-interactive testing.  The goal is to minimize this and to make it
+as easy and fast as possible.
+
 To run your servlet under GAE dev_appserver without interactive dev
 capabilities:
 
@@ -37,15 +46,6 @@ capabilities:
  reloading code.
 
  4.  run dev_appserver.sh as per official GAE instructions.
-
-If everything goes well, you'll develop your code interactively using
-jetty-runner.jar, and then system test it using dev_appserver.  It
-will pass with flying colors.
-
-In practice, you're likely to find problems with dev_appserver, so you
-will inevitably end up switching between interactive and
-non-interactive testing.  The goal is to minimize this and to make it
-as easy and fast as possible.
 
 Note that having jar dependencies in war/WEB-INF/lib has no effect
 under jetty-runner.jar so you don't need to remove them once they're

@@ -20,14 +20,20 @@ and responses.  Ring provides a way to do this in pure Clojure.
 
  2. ring
 
-  a.  ring1
+  a.  ring1 - use minimal ring "glue" code to convert HttpServlet
+  requests and responses to and from Clojure maps; ring code in
+  implementation file
 
-  b.  ring2
+  b.  ring2 - migrate ring code to servlet (gen-class'd) namespace
 
 Compojure is basically a set of macros that enable us to write Ring
 routes in a more conventient form.
 
  3. compojure
+
+  a. compojure1 - basic use of compojure
+
+  b. compojure2 - webapp with two servlets
 
 Up to now we've run servlets under the GAE dev_appserver environment,
 but we have not used an GAE services.  The next set of examples shows
@@ -35,9 +41,11 @@ what happens when we try to use GAE runtime services.
 
  4. gae
 
-  a. gae1 - minimal example of using a GAE service
+  a. gae1 - minimal example, two servlets; use of :jar-exclusions to
+  retain interactive development
 
-  b. gae2 - repl hack: interactive development using GAE dev_appserver
+  b. gae2 - minimal use of GAE service; repl hack: interactive
+  development using GAE dev_appserver
 
 
 ## gen-class

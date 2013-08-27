@@ -1,8 +1,19 @@
-;; to install add this to your init file:
+;; in clojure mode, on save, copy from src dir to webapp classes dir
+;; so changes will be reloaded under Google Appengine dev_appserver.
+
+;; NB: designed to be used with .dir-locals.el in projet directory containing:
+;; ((clojure-mode
+;;   (warroot . "$HOME/migae-examples/gae2/war")
+;;   (srcroot . "$HOME/migae-examples/gae2/src")))
+;; See gae2 project for example.
+
+;; to install, put this file in your load path, byte compile it,
+;; and add this to your init file:
+;; (load (expand-file-name "~/.emacs.d/elisp/migae-save-buffer"))
 ;; (add-hook 'clojure-mode-hook
-;;              (lambda ()
-;;                (define-key clojure-mode-map "\C-xC-s"
-;;                            'migae-save-buffer)))
+;; 	  (lambda ()
+;; 	    (message "clojure-mode-hook migae")
+;; 	    (define-key clojure-mode-map (kbd "C-x C-s") 'migae-save-buffer)))
 
 (defun migae-save-buffer (&optional args)
   (interactive "p")
@@ -18,3 +29,4 @@
     (copy-file srcfile tgtfile t)))
 
 ;; (and modp (memq args '(4 64)) (setq buffer-backed-up nil))))
+(provide 'migae-save-buffer)

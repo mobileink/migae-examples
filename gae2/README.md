@@ -1,4 +1,4 @@
-# The Great dev_appserver repl Hack
+# The Ghastly dev_appserver REPL Hack
 
 This exercise demonstrates a devious hack by means of which we get
 repl-like interactive development using the GAE dev_appserver.
