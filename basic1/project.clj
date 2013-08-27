@@ -5,7 +5,7 @@
             :url "http://www.eclipse.org/legal/epl-v10.html"}
   :javac-options ["-nowarn" "-target" "1.7" "-source" "1.7" "-Xlint:all"]
   :repl-options {:port 4005}
-;  :aot [basic1.servlet]
+;;  :aot [basic1.servlet]
   :compile-path "war/WEB-INF/classes"
   :target-path "war/WEB-INF/lib"
   :keep-non-project-classes false

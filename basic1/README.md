@@ -59,9 +59,10 @@ something like:
 
 What went wrong?  First, check war/WEB-INF/web.xml to make sure we've
 told the servlet container to fetch the corrct servlet.  You should
-find:
+find something like:
 
     <servlet>
+        <display-name>basic1</display-name>
         <servlet-name>test</servlet-name>
     	<servlet-class>basic1.servlet</servlet-class>
     </servlet>
@@ -70,7 +71,10 @@ find:
     	<url-pattern>/test/*</url-pattern>
     </servlet-mapping>
 
-That looks correct; now double-check that we indeed made basic1.servlet.  That is, make sure our source tree is correct - it should have /basic1/src/basic1/servlet.clj, and servlet.clj should start by declaring the namespace that matches the directory layout: 
+That looks correct; now double-check that we indeed compiled
+`basic1.servlet`.  That is, make sure our source tree is correct - it
+should have /basic1/src/basic1/servlet.clj, and servlet.clj should
+start by declaring the namespace that matches the directory layout:
 
      (ns basic1.servlet ...
 
@@ -96,7 +100,7 @@ This would not be a problem if we were doing pure Clojure work here,
 since the Clojure runtime will look for .clj files as well as class
 files.  But we're using a standard Servlet container, which doesn't
 know anything about Clojure.  When it receives a request for a URL
-(/test/foo in this case), it looks up the URL in the web.xml file to
+(`/test/foo` in this case), it looks up the URL in the web.xml file to
 discover which servlet it is mapped to.  Then it searches the
 classpath for the servlet, which, of course, must be a class file -
 the container is only interested in Java byte code.
@@ -109,6 +113,11 @@ compiled byte code should go, we use the :compile-path option in our
 project file:
 
     :compile-path "war/WEB-INF/classes"
+
+(Leiningen assumes Clojure source code is in the `src` subdirectory;
+to tell it otherwise, use :source-paths.  To see a complete list of
+options run `$ lein help sample` or go to
+https://github.com/technomancy/leiningen/blob/stable/sample.project.clj)
 
 If you run `$ lein compile` as things stand, nothing will happen.
 That's because Leiningen will only compile what is listed using the
@@ -174,8 +183,17 @@ for the appropriate class file.  As we will see in exercise ex1b, the
 the result is that Clojure will search for either a .clj file or a
 .class file; if it finds the former, it will load and evaluate it.
 
-Exercize: try deleting the .class files one at a time, and see what
+Exercise: try deleting the .class files one at a time, and see what
 kind of errors arise when you try to run the servlet.
+
+Exercise: try running with only the .class files, without the jar
+file.  Then `$ lein jar` again and inspect the jar file; it should
+contain .class files.  Try running with both, then delete the
+war/WEB-INF/classes directory and run with only the jarfile.
+
+**DON'T FORGET** Our servlet does not send an HTML response, it only
+  writes to stdout.  So you won't see any result in the browser; you
+  have to look in `jetty.err.log` to see the output.
 
 The point of this trivial little exercise is to show how `gen-class`,
 aot compilation, lein's jar task, and the servlet container work
