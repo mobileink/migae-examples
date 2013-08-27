@@ -1,4 +1,4 @@
-(ns ex1c.filter
+(ns basic4.filter
   (:import (javax.servlet Filter FilterChain FilterConfig
                           ServletRequest ServletResponse))
   (:gen-class :implements [javax.servlet.Filter]
@@ -6,12 +6,12 @@
 
 (defn -finit
   [& rest]
-  (println "ex1c.filter finit implemenation invoked"))
+  (println "basic4.filter finit implemenation invoked"))
 
 (defn -init
   [^Filter this
    ^FilterConfig cfg]
-  (println "ex1c.filter init implemenation invoked"))
+  (println "basic4.filter init implemenation invoked"))
 
 (defn -doFilter
   [^Filter this
@@ -19,8 +19,8 @@
    ^ServletResponse resp
    ^FilterChain chain]
   (do
-    (println "ex1c.filter doFilter implementation invoked")
-    (require 'ex1c.impl :reload :verbose)
+    (println "basic4.filter doFilter implementation invoked")
+    (require 'basic4.impl :reload :verbose)
     ;; if this is the last filter in the chain, the following
     ;; will invoke the the "target Web resource", i.e. the servlet
     ;; without this doFilter call, the servlet will not be invoked
@@ -29,4 +29,4 @@
 
 (defn -destroy
   [^Filter this]
-  (println "ex1c.filter destroy implementation invoke"))
+  (println "basic4.filter destroy implementation invoke"))
