@@ -5,6 +5,7 @@
             :url "http://www.eclipse.org/legal/epl-v10.html"}
   :javac-options ["-nowarn" "-target" "1.7" "-source" "1.7" "-Xlint:all"]
   :aot [basic3.test]
+  ;; :aot [basic3.test basic3.impl]
   :compile-path "war/WEB-INF/classes"
   :resource-paths ["src"] ;; this puts clj source in the jarfile so non-aot methods available
   :target-path "war/WEB-INF/lib"

@@ -17,6 +17,7 @@
    ^ServletConfig cfg]
   (println "basic3.impl test-init method implementation invoked"))
 
+;; This time we return an HTML response.
 ;; The bad way to do it - using the Java API instead of ring:
 (defn test-doGet
   [^HttpServlet servlet
