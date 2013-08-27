@@ -1,32 +1,25 @@
-# ex1
+# basic2
 
-FIXME: description
+A slightly more elaborate Clojure servlet.
 
-## Installation
+##
 
-Download from http://example.com/FIXME.
+Try running this under `../migae-jetty.sh` out of the box, after running `lein jar`.  It should run with no problem.
 
-## Usage
+Then try it with `dev_appserver`.  You should see on the console something like 
+```
+WARNING: Error for /test/foo
+java.lang.NoClassDefFoundError: clojure/lang/IFn
+```
 
-FIXME: explanation
+That's because we have not installed the Clojure runtime.  If you look
+at the code in migae-jetty.sh, you'll see we reference the Clojure
+runtime.  Jetty allows this, but dev_appserver does not, for security
+reaons.  The GAE server is designed to run code in a secure "sandbox",
+so there is no way to tell it to look for code outside of war/WEB-INF.
 
-    $ java -jar ex1-0.1.0-standalone.jar [args]
-
-## Options
-
-FIXME: listing of options this app accepts.
-
-## Examples
-
-...
-
-### Bugs
-
-...
-
-### Any Other Sections
-### That You Think
-### Might be Useful
+So to make this example run under dev_appserver, copy the Clojure jar
+to war/WEB-INF/lib.
 
 ## License
 

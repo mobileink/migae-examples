@@ -8,7 +8,7 @@
   <servlet>
     <display-name>basic2</display-name>
     <servlet-name>test</servlet-name>
-    <servlet-class>basic2.servlet</servlet-class>
+    <servlet-class>basic2.request</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>test</servlet-name>
