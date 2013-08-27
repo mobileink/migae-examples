@@ -1,4 +1,4 @@
-(ns ex1b.impl
+(ns basic3.impl
   (:import (javax.servlet.http HttpServlet
                                HttpServletRequest
                                HttpServletResponse)
@@ -6,16 +6,16 @@
 
 (defn test-objinit
   [& rest]
-  (println "ex1b.impl test-objinit invoked"))
+  (println "basic3.impl test-objinit invoked"))
 
 (defn test-objpostinit
   [obj & rest]
-  (println "ex1b.impl test-objpostinit invoked"))
+  (println "basic3.impl test-objpostinit invoked"))
 
 (defn test-init
   [^HttpServlet servlet
    ^ServletConfig cfg]
-  (println "ex1b.impl test-init method implementation invoked"))
+  (println "basic3.impl test-init method implementation invoked"))
 
 ;; The bad way to do it - using the Java API instead of ring:
 (defn test-doGet
@@ -25,19 +25,19 @@
   ;; PrintWriter out = response.getWriter();
   ;; out.println("Hello World");
   (do
-    (println "ex1b.impl test-doGet method implementation invoked")
+    (println "basic3.impl test-doGet method implementation invoked")
     (.println (.getWriter resp) "Hello World - the bad way!")))
 
 (defn test-destroy
   []
-  (println "ex1b.impl test-destroy method implementation invoked"))
+  (println "basic3.impl test-destroy method implementation invoked"))
 
 ;; Expected console output when localhost:8080/request/foo accessed:
 
-;; ex1b.impl test-objinit invoked
-;; ex1b.impl test-objpostinit invoked
-;; ex1b.impl test-init method implementation invoked
-;; ex1b.impl test-service method implementation invoked
+;; basic3.impl test-objinit invoked
+;; basic3.impl test-objpostinit invoked
+;; basic3.impl test-init method implementation invoked
+;; basic3.impl test-service method implementation invoked
 
-;; (assuming use of jetty-runner.jar)
+
 
