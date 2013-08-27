@@ -6,10 +6,14 @@ Examples of java servlet programming in Clojure.  The designed order is:
  1. basic
 
   a. basic0 - plain Java servlet, no Clojure, to demo leiningen and servlet testing
+
   b. basic1 - minimal Clojure servlet using gen-class; explore compile v. jar
+
   c. basic2 - slightly more elaborate servlet
+
   d. basic3 - use of :impl-ns to put implementation in loadable namespace
-  3. basic4 - use of Servlet Filter to enable dynamic code reloading
+
+  e. basic4 - use of Servlet Filter to enable dynamic code reloading
 
 So far we have used Java interop facilities to deal with HTTP requests
 and responses.  Ring provides a way to do this in pure Clojure.
@@ -17,6 +21,7 @@ and responses.  Ring provides a way to do this in pure Clojure.
  2. ring
 
   a.  ring1
+
   b.  ring2
 
 Compojure is basically a set of macros that enable us to write Ring
@@ -31,6 +36,7 @@ what happens when we try to use GAE runtime services.
  4. gae
 
   a. gae1 - minimal example of using a GAE service
+
   b. gae2 - repl hack: interactive development using GAE dev_appserver
 
 
