@@ -1,33 +1,33 @@
-(ns ex2a.impl
-  (:use ex2a.test)
+(ns ring1.impl
+  (:use ring1.test)
   (:require [ring.util.servlet :as ring])
   (:import (javax.servlet.http HttpServlet
                                HttpServletRequest
                                HttpServletResponse)
            (javax.servlet ServletConfig)))
 
-(defn ex2a-objinit
+(defn ring1-objinit
   [& rest]
-  (println "ex2a.impl ex2a-objinit invoked"))
+  (println "ring1.impl ring1-objinit invoked"))
 
-(defn ex2a-objpostinit
+(defn ring1-objpostinit
   [obj & rest]
-  (println "ex2a.impl ex2a-objpostinit invoked"))
+  (println "ring1.impl ring1-objpostinit invoked"))
 
-(defn ex2a-init
+(defn ring1-init
   [^HttpServlet servlet
    ^ServletConfig cfg]
-  (println "ex2a.impl ex2a-init method implementation invoked"))
+  (println "ring1.impl ring1-init method implementation invoked"))
 
 ;; A basic ring handler:
 (defn theHandler [request]
   {:status 200
    :headers {"Content-Type" "text/html"}
-   :body "Hello World from ring handler ex2a.impl$theHandler!"})
+   :body "Hello World from ring handler ring1.impl$theHandler!"})
 
 ;; connect ring handler to servlet api:
 ;; (see ring-jetty-adapter, ring-servlet)
-(defn ex2a-service
+(defn ring1-service
   [^HttpServlet this
    ^HttpServletRequest rqst
    ^HttpServletRequest resp]
@@ -36,7 +36,7 @@
     (when response-map
       (ring/update-servlet-response resp response-map))))
 
-(defn ex2a-destroy
+(defn ring1-destroy
   []
-  (println "ex2a.impl ex2a-destroy method implementation invoked"))
+  (println "ring1.impl ring1-destroy method implementation invoked"))
 

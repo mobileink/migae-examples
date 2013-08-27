@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+	DO NOT EDIT!  THIS IS A TEMPLATE used to generate
+	war/WEB-INF/appengine-web.xml.  Edit project.clj instead.
+-->
+<appengine-web-app xmlns="http://appengine.google.com/ns/1.0">
+  <application>migae-01</application>
+  <version>-0-1-1</version>
+  <threadsafe>true</threadsafe>
+</appengine-web-app>
