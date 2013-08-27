@@ -13,5 +13,6 @@
   :omit-source true ;; default
   :dependencies [[org.clojure/clojure "1.5.1"]
                  [compojure "1.1.5"]
+                 [commons-codec "1.7"]
                  [ring/ring-servlet "1.2.0"]]
   :plugins [[lein-migae "0.1.0-SNAPSHOT"]])
