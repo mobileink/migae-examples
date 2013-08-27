@@ -1,10 +1,10 @@
-(ns ex2b.theServlet
+(ns ring2.theServlet
   (:import (javax.servlet.http HttpServlet
                                HttpServletRequest
                                HttpServletResponse)
            (javax.servlet ServletConfig))
   (:gen-class :extends javax.servlet.http.HttpServlet)
-  (:require [ex2b.impl :as impl]
+  (:require [ring2.impl :as impl]
             [ring.util.servlet :as ring]))
 
 ;; ring.util.servlet contains what is essentially HttpServlet POJO<->Clojure
@@ -23,7 +23,7 @@
    ^HttpServletRequest rqst
    ^HttpServletRequest resp]
   (do
-    (println "ex2b.theServlet -service method implementation invoked")
+    (println "ring2.theServlet -service method implementation invoked")
     (let [request-map  (ring/build-request-map rqst)
           response-map (impl/service request-map)]
       (when response-map
@@ -39,7 +39,7 @@
 ;;    ^HttpServletRequest rqst
 ;;    ^HttpServletRequest resp]
 ;;   (do
-;;     (println "ex2b.theServlet -doGet method implementation invoked")
+;;     (println "ring2.theServlet -doGet method implementation invoked")
 ;;     (let [request-map  (ring/build-request-map rqst)
 ;;           response-map (impl/doGet request-map)]
 ;;       (when response-map

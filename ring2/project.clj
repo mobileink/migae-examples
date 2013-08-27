@@ -1,11 +1,11 @@
-(defproject ex2b "0.1.0-SNAPSHOT"
+(defproject ring2 "0.1.0-SNAPSHOT"
   :description "FIXME: write description"
   :min-lein-version "2.0"
   :license {:name "Eclipse Public License"
             :url "http://www.eclipse.org/legal/epl-v10.html"}
   :javac-options ["-nowarn" "-target" "1.7" "-source" "1.7" "-Xlint:all"]
   :repl-options {:port 4005}
-  :aot [ex2b.theServlet ex2b.filter]
+  :aot [ring2.theServlet ring2.filter]
   :compile-path "war/WEB-INF/classes"
   :resource-paths ["src"] ;; this puts clj source in the jarfile so non-aot methods available
   :target-path "war/WEB-INF/lib"
