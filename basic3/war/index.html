@@ -82,6 +82,16 @@
   </p>
 
   <p>
+    (Note that this only works under a plain servlet container without
+    the kind of security restrictions found in dev_appserver.  The
+    server must obviously be configure so that the source code is on
+    the classpath, which you cannot do with dev_appserver if the
+    source code is outside of the webapp directory structure.  See
+    README.md for more info.)
+  </p>
+
+
+  <p>
     Thereafter each time you access /test/* you should see, in the console:
   </p>
 
