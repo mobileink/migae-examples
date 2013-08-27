@@ -5,6 +5,7 @@
 ;; ((clojure-mode
 ;;   (warroot . "$HOME/migae-examples/gae2/war")
 ;;   (srcroot . "$HOME/migae-examples/gae2/src")))
+;; WARNING!  Edit these paths so they are correct for your system!
 ;; See gae2 project for example.
 
 ;; to install, put this file in your load path, byte compile it,
