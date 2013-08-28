@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+	DO NOT EDIT!  THIS IS A TEMPLATE used to generate
+	war/WEB-INF/appengine-web.xml.  Edit project.clj instead.
+-->
+<appengine-web-app xmlns="http://appengine.google.com/ns/1.0">
+
+  <application>migae-01</application>
+  <version>-0-1-0</version>
+
+  <threadsafe>true</threadsafe>
+
+  <!-- <static-files> -->
+  <!--   <include path="public/**" /> -->
+  <!--    -->
+  <!--   <include path="/my_static-files" > -->
+  <!--     <http-header name="Access-Control-Allow-Origin" value="http://example.org" /> -->
+  <!--   </include> -->
+  <!-- </static-files> -->
+
+  <!-- <resource-files> -->
+  <!--   <include path="public/**" /> -->
+  <!--    -->
+  <!-- </resource-files> -->
+
+  <!-- <public-root>/static</public-root> -->
+
+  <system-properties>
+    <property name="java.util.logging.config.file"
+	      value="WEB-INF/logging.properties" />
+  </system-properties>
+
+  <!-- <env-variables> -->
+  <!--   <env-var name="DEFAULT_ENCODING" value="UTF-8" /> -->
+  <!-- </env-variables> -->
+
+  <ssl-enabled>false</ssl-enabled>
+
+  <sessions-enabled>true</sessions-enabled>
+
+  <!--
+    After enabling Appstats in your web.xml file, uncomment this section to add a custom Appstats link 
+    to your app's admin console, as described in
+    http://code.google.com/appengine/docs/java/config/appconfig.html#Administration_Console_Custom_Pages
+
+    <admin-console>
+      <page name="Appstats" url="/appstats" />
+    </admin-console>
+   -->
+
+</appengine-web-app>

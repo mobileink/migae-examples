@@ -7,8 +7,8 @@
   :repl-options {:port 4005}
   :aot [gae2.main gae2.user gae2.filter]
   ;; :aot [#"gae2*"]
-  :compile-path "war/WEB-INF/classes"
   :resource-paths ["src"]
+  :compile-path "war/WEB-INF/classes"
   :target-path "war/WEB-INF/lib"
   ;; CRITICAL!  Use :jar-exclusions to make sure the implementation code
   ;; is not byte compiled into the jar.
