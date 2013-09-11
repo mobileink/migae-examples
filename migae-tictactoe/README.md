@@ -1,5 +1,8 @@
 # migae-tictactoe
 
+Clojure (migae) implementation of TicTacToe example demonstrating Channel service.
+
+See https://developers.google.com/appengine/docs/java/channel/#Java_Example_Tic_Tac_Toe_application
 
 ## Usage
 
