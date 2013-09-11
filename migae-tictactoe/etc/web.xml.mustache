@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<web-app xmlns="http://java.sun.com/xml/ns/javaee"
+	 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	 version="2.5"
+	 xsi:schemaLocation="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+{{#migae}}
+  <!-- #################### -->
+{{#filters}}
+  <filter>
+    <filter-name>{{filter}}</filter-name>
+    <filter-class>{{class}}</filter-class>
+  </filter>
+{{/filters}}
+
+  {{#servlets}}
+  {{#services}}
+  <!-- #################### -->
+  <servlet-mapping>
+    <url-pattern>{{url-pattern}}</url-pattern>
+    <servlet-name>{{servlet}}</servlet-name>
+  </servlet-mapping>
+  {{/services}}
+
+  <!-- #################### -->
+  {{#filters}}
+  <filter-mapping>
+    <servlet-name>{{servlet}}</servlet-name>
+    <filter-name>{{filter}}</filter-name>
+  </filter-mapping>
+  {{/filters}}
+  <servlet>
+    <servlet-name>{{servlet}}</servlet-name>
+    <servlet-class>{{class}}</servlet-class>
+    <display-name>{{ns}}</display-name>
+  </servlet>
+
+  {{/servlets}}
+  {{#security}}
+  <!-- ################ -->
+  <security-constraint>
+    <web-resource-collection>
+      <web-resource-name>{{web-resource-name}}</web-resource-name>
+      <url-pattern>{{url-pattern}}</url-pattern>
+    </web-resource-collection>
+    <auth-constraint>
+      <role-name>{{role-name}}</role-name>
+    </auth-constraint>
+  </security-constraint>
+  {{/security}}
+
+  <!-- #################### -->
+  <welcome-file-list>
+    <welcome-file>{{welcome}}</welcome-file>
+  </welcome-file-list>
+
+  <!-- #################### -->
+  <error-page>
+    <error-code>404</error-code>
+    <location>/404.html</location>
+  </error-page>
+{{/migae}}
+</web-app>
