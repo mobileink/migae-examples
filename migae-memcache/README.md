@@ -1,5 +1,6 @@
-# migae2
+# migae-memcache
 
+Servlet using GAE memcache services
 
 ## Usage
 
