@@ -74,12 +74,9 @@ To make this work you must:
   JARDIR pointing to this dir and put it in ~/.bash_profile: export
   JARDIR="~/.jar".  Relaunch your terminal/shell to make this take effect.
 
-  2. To download the jetty jars, run:
-
+  2. Download the jetty jars by running:
      	 basic0 $ lein deps
-
-leiningen installs the jars in the local maven repository, which is usually ~/.m2/repository.
-
+leiningen installs the jars in the local maven repository, which is usually ~/.m2/repository.  Which files to download is controlled by the :dependencies clause in the project.clj file.
   3. Find the jetty jars in the local maven repo.  See the project.clj
   file to discover the version number to look for.  For example:
 
