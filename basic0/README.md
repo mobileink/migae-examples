@@ -78,7 +78,7 @@ To make this work you must:
 3. Find the jetty jars in the local maven repo.  See the project.clj file to discover the version number to look for.  For example:
 ```
     ~/.m2/repository/org/eclipse/jetty/jetty-runner/9.0.5.v20130815/jetty-runner-9.0.5.v20130815.jar
-
+```
 4. Make a softlink from the jetty jar to your JARDIR: e.g.
 ```
     $ ln -s ~/.m2/repository/org/eclipse/jetty/jetty-runner/9.0.5.v20130815/jetty-runner-9.0.5.v20130815.jar $JARDIR/jetty-runner.jar
