@@ -92,7 +92,12 @@ To make this work you must:
     $ ln -s /.m2/repository/org/clojure/clojure/1.5.1/clojure-1.5.1.jar $JARDIR/jetty-runner.jar
 ```
 
-Check your work:  `$ ls -l $JARDIR`  -- the -l flag will make ls display the links with "->"
+Check your work:  `$ ls -l $JARDIR`  -- the -l flag will make ls display the links with "->", something like the following (redacted) display:
+
+```
+... clojure.jar -> ~/.m2/repository/org/clojure/clojure/1.5.1/clojure-1.5.1.jar
+... jetty-runner.jar -> ~/.m2/repository/org/eclipse/jetty/jetty-runner/9.0.5.v20130815/jetty-runner-9.0.5.v20130815.jar
+```
 
 Making links like this immunizes you from hardcoded version numbers.
 When you install a new version, you can just redo the links instead of
