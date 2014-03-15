@@ -69,16 +69,15 @@ https://github.com/mobileink/lein-migae/blob/master/src/leiningen/migae/jetty.cl
 
 To make this work you must:
 
-  1. Decide on a place to put jarfiles.  Good choices are ~/.jar
-  (hidden), /usr/local/jar, /usr/local/lib.  Define an environment var
-  JARDIR pointing to this dir and put it in ~/.bash_profile: export
-  JARDIR="~/.jar".  Relaunch your terminal/shell to make this take effect.
+  1. Decide on a place to put jarfiles.  Good choices are `~/.jar`
+  (hidden), `/usr/local/jar`, or `/usr/local/lib`.  Define an environment var
+  JARDIR pointing to this dir and put it in ~/.bash_profile: `export
+  JARDIR="~/.jar"`.  Relaunch your terminal/shell to make this take effect.
   2. Download the jetty jars by running: `basic0 $ lein deps`
      Leiningen installs the jars in the local maven repository, which is usually ~/.m2/repository.  Which files to download is controlled by the :dependencies clause in the project.clj file.
   3. Find the jetty jars in the local maven repo.  See the project.clj file to discover the version number to look for.  For example:
 ```
     ~/.m2/repository/org/eclipse/jetty/jetty-runner/9.0.5.v20130815/jetty-runner-9.0.5.v20130815.jar
-```
   4. Make a softlink from the jetty jar to your JARDIR: e.g.
 ```
     $ ln -s ~/.m2/repository/org/eclipse/jetty/jetty-runner/9.0.5.v20130815/jetty-runner-9.0.5.v20130815.jar $JARDIR/jetty-runner.jar
