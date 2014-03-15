@@ -79,12 +79,15 @@ To make this work you must:
 ```
     ~/.m2/repository/org/eclipse/jetty/jetty-runner/9.0.5.v20130815/jetty-runner-9.0.5.v20130815.jar
 ```
-    Make a softlink from the jetty jar to your JARDIR: e.g.
+
+  Make a softlink from the jetty jar to your JARDIR: e.g.
+
 ```
     $ ln -s ~/.m2/repository/org/eclipse/jetty/jetty-runner/9.0.5.v20130815/jetty-runner-9.0.5.v20130815.jar $JARDIR/jetty-runner.jar
 ```
 
-      While you're at it, make a link for the clojure jar:
+  While you're at it, make a link for the clojure jar:
+
 ```
     $ ln -s /.m2/repository/org/clojure/clojure/1.5.1/clojure-1.5.1.jar $JARDIR/jetty-runner.jar
 ```
