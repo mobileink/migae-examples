@@ -1,8 +1,7 @@
 #!/bin/sh
 
-CLJ="${HOME}/.m2/repository/org/clojure/clojure/1.5.1/clojure-1.5.1.jar"
-JETTYRUNNER="${HOME}/.m2/repository/org/eclipse/jetty/jetty-runner/9.0.5.v20130815/jetty-runner-9.0.5.v20130815.jar"
-JETTY_HOME=/usr/local/java/jetty
+CLJ="${JARDIR}/clojure.jar"
+JETTYRUNNER="${JARDIR}/jetty-runner.jar"
 
 case $1 in
     start)
