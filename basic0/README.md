@@ -59,8 +59,9 @@ The result should be a file HelloWorld.class in war/WEB-INF/classes.
 
 #### Standard Servlet container
 
-Now let's run jetty-server to test the servlet, first with lein-migae
-then with ../migae-jetty.sh.
+Now let's test our little servlet.  First we'll run jetty-server, once
+with lein-migae and once with ../migae-jetty.sh, then we'll use the
+GAE dev server.
 
 ##### lein-migae
 
@@ -107,7 +108,7 @@ Now launch:
 
     basic0 $ lein migae jetty start
 
-Execute `$ ps` to verify the server is running, then access `localhost:8080`; it should display "Hellow World".
+Execute `$ ps` to verify the server is running, then access `localhost:8080`; it should display "Hello World".
 
 You can stop the server with `lein migae jetty stop`.
 
@@ -128,20 +129,23 @@ Now send your browser to localhost:8080/.  You should get a "Hello World" result
 Take a look at jetty.err.log and jetty.rqst.log so you'll get an idea
 of how jetty tries to communicate with us.
 
-#### GAE dev_appserver
+##### GAE dev_appserver
 
-Stop the jetty server (`./migae-jetty.sh stop`) and do:
+Stop the jetty server (`migae-jetty.sh stop`) and do:
 
     basic0 $ ${GAESDK_HOME}/bin/dev_appserver.sh war
 
 where ${GAESDK_HOME} is the path to your GAE SDK installation.
 
-Note the messages in the console.
+Note the messages in the console.  Google's app engine dev server is a
+modified version of jetty.
 
 dev_appserver is configured to support so-called "hot" deployment.  If
 you change web.xml or appengine-web.xml, the server will detect this
 and reinitialize.  Try changing the version number in
 appengine-web.xml to 0-1-1 and watch the console messages.
+
+Use `^C` (control-C) to stop the dev server.
 
 ## License
 
