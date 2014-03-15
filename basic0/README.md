@@ -107,14 +107,21 @@ Now launch:
 
     basic0 $ lein migae jetty start
 
-If not, edit ./migae-jetty.sh as appropriate and do:
+Execute `$ ps` to verify the server is running, then access `localhost:8080`; it should display "Hellow World".
+
+You can stop the server with `lein migae jetty stop`.
+
+
+##### migae-jetty.sh
+
+Follow the steps describe for lein-migae to set up your $JARDIR and softlinks.  Then just run
 
     basic0 $ ./migae-jetty.sh start
 
 Use `ps` to verify that it's running and inspect the error log it
 creates to make sure there are no errors.
 
-(You can stop the server with `migae-jetty.sh stop` or `lein migae jetty stop`.)
+You can stop the server with `migae-jetty.sh stop`.
 
 Now send your browser to localhost:8080/.  You should get a "Hello World" result.
 
