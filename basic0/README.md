@@ -32,7 +32,7 @@ jar` or `lein uberjar`.
 
 ### Jetty
 
-We use jetty-runner; for more information, see [Use Jetty without an
+We use jetty-runner as our server; for more information, see [Use Jetty without an
 installed
 distribution](http://www.eclipse.org/jetty/documentation/current/jetty-runner.html)
 and [Jetty/Howto/Using Jetty Runner](http://wiki.eclipse.org/Jetty/Howto/Using_Jetty_Runner).
@@ -59,7 +59,8 @@ The result should be a file HelloWorld.class in war/WEB-INF/classes.
 
 #### Standard Servlet container
 
-Now let's test the servlet, with jetty-runner first with lein-migae then with ../migae-jetty.sh.
+Now let's run jetty-server to test the servlet, first with lein-migae
+then with ../migae-jetty.sh.
 
 ##### lein-migae
 
@@ -68,35 +69,38 @@ https://github.com/mobileink/lein-migae/blob/master/src/leiningen/migae/jetty.cl
 
 To make this work you must:
 
-  1 Decide on a place to put jarfiles.  Good choices are ~/.jar
+  1. Decide on a place to put jarfiles.  Good choices are ~/.jar
   (hidden), /usr/local/jar, /usr/local/lib.  Define an environment var
   JARDIR pointing to this dir and put it in ~/.bash_profile: export
   JARDIR="~/.jar".  Relaunch your terminal/shell to make this take effect.
 
-  2 Run "lein deps" to download the jetty jars; leiningen installs them in the local maven repository, which is usually ~/.m2/repository.
+  2. To download the jetty jars, run:
 
-  3 Find the jetty jars in the local maven repo.  See the project.clj
+     	 basic0 $ lein deps
+
+leiningen installs the jars in the local maven repository, which is usually ~/.m2/repository.
+
+  3. Find the jetty jars in the local maven repo.  See the project.clj
   file to discover the version number to look for.  For example:
 
     ~/.m2/repository/org/eclipse/jetty/jetty-runner/9.0.5.v20130815/jetty-runner-9.0.5.v20130815.jar
 
-  4 Make a softlink from the jetty jar to your JARDIR: e.g.
+  4. Make a softlink from the jetty jar to your JARDIR: e.g.
 
     "~ $ ln -s ~/.m2/repository/org/eclipse/jetty/jetty-runner/9.0.5.v20130815/jetty-runner-9.0.5.v20130815.jar $JARDIR/jetty-runner.jar"
 
-    While you're at it, make a link for the clojure jar:
+While you're at it, make a link for the clojure jar:
 
-    "~ $ ln -s /.m2/repository/org/clojure/clojure/1.5.1/clojure-1.5.1.jar $JARDIR/jetty-runner.jar"
+    ~ $ ln -s /.m2/repository/org/clojure/clojure/1.5.1/clojure-1.5.1.jar $JARDIR/jetty-runner.jar
 
-    Check your work:  $ ls -l $JARDIR  -- the -l flag will make ls display the links with "->"
+Check your work:  $ ls -l $JARDIR  -- the -l flag will make ls display the links with "->"
 
-    Making links like this immunizes you from hardcoded version
-    numbers.  When you install a new version, you can just redo the
-    links instead of editing lots of hardcoded versioned names.
+Making links like this immunizes you from hardcoded version numbers.
+When you install a new version, you can just redo the links instead of
+editing lots of hardcoded versioned names.
 
+Now launch:
 
-
-    basic0 $ lein deps   // downloads jetty-runner (see project.clj)
     basic0 $ lein migae jetty start
 
 If not, edit ./migae-jetty.sh as appropriate and do:
