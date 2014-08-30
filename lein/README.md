@@ -106,3 +106,21 @@ the restrictions imposed by GAE can be side-stepped by using plain
 Jetty, so that you get rapid interactive development.  Only when you
 are ready for system testing and deployment to production do you need
 to use the GAE dev server.
+
+## Logging
+
+https://github.com/malcolmsparks/clj-logging-config
+http://blog.malcolmsparks.com/?p=37
+http://gphil.net/posts/2012-09-04-logging-in-clojure.html
+
+project.clj:
+
+```
+[log4j "1.2.17" :exclusions [javax.mail/mail
+       			    javax.jms/jms
+			    com.sun.jdmk/jmxtools
+       			    com.sun.jmx/jmxri]]
+[org.slf4j/slf4j-log4j12 "1.6.6"]
+;; [clj-logging-config "1.9.10"]
+[org.clojure/tools.logging "0.2.3"]]
+```
