@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<web-app
+    version="2.5"
+    xmlns="http://java.sun.com/xml/ns/javaee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+
+  <!-- #################### -->
+  <filter-mapping>
+    <url-pattern>/*</url-pattern>
+    <filter-name>reload-filter</filter-name>
+  </filter-mapping>
+  <filter>
+    <filter-name>reload-filter</filter-name>
+    <filter-class>org.example.filter</filter-class>
+  </filter>
+
+  <!-- #################### -->
+  <servlet-mapping>
+    <url-pattern>/request/*</url-pattern>
+    <servlet-name>request</servlet-name>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>request</servlet-name>
+    <servlet-class>org.example.request</servlet-class>
+    <!-- <display-name>aama.aama-servlet</display-name> -->
+  </servlet>
+
+  <!-- #################### -->
+  <servlet-mapping>
+    <url-pattern>/user/*</url-pattern>
+    <servlet-name>user</servlet-name>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>user</servlet-name>
+    <servlet-class>org.example.user</servlet-class>
+  </servlet>
+
+
+  <servlet>
+    <servlet-name>java</servlet-name>
+    <servlet-class>HelloJava</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>java</servlet-name>
+    <url-pattern>/java</url-pattern>
+  </servlet-mapping>
+
+
+  <!-- #################### -->
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+  </welcome-file-list>
+
+  <!-- #################### -->
+  <error-page>
+    <error-code>404</error-code>
+    <location>/404.html</location>
+  </error-page>
+
+</web-app>

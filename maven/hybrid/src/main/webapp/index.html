@@ -1,0 +1,26 @@
+<html>
+  <head>
+    <title>Hybrid Clojure/Java GAE Webapp</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"></meta>
+    <!-- <script type="text/javascript" src="/js/hybrid.js"></script> -->
+    <!-- <link rel="stylesheet" type="text/css" media="screen" -->
+    <!-- 	  href="/css/hybrid.css"></link> -->
+  </head>
+
+  <body>
+    <h1>Welcome</h1>
+
+    <p>This is a static html file.</p>
+
+    <h2>Servlet services</h2>
+    <ul>
+      <li><a href="/java">/java</a> - org.example.HelloJava servlet</li>
+      <li><a href="/request/hello/joe">/request/hello/*</a> - org.example.request servlet.  Handles any path of the form /request/hello/*.</li>
+      <li><a href="/request/goodbye/jane">/request/goodbye/*</a> - org.example.request servlet.  Handles any path of the form /request/goodbye/*.</li>
+      <li><a href="/user/hello/sally">/user/hello/*</a> - org.example.user servlet.  Handles any path of the form /user/hello/*.</li>
+      <li><a href="/user/goodbye/frank">/user/goodbye/*</a> - org.example.user servlet.  Handles any path of the form /user/goodbye/*.</li>
+      <!-- <li><a href="/user">/user</a> - logout</li> -->
+    </ul>
+
+  </body>
+</html>
